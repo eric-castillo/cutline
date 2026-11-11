@@ -1,0 +1,82 @@
+{
+  "$description": "Cutline design tokens, direction A (Letrero). Platform-neutral: build steps emit tokens.css (web) and tokens.ts (React Native). Lengths are unitless numbers meaning CSS px on web and density-independent points on mobile.",
+  "$version": 1,
+  "color": {
+    "paper": "#F5F0E6",
+    "card": "#FBF8F1",
+    "white": "#FFFFFF",
+    "ink": "#1C1A17",
+    "muted": "#5E574D",
+    "line": "#D9D1C1",
+    "lineStrong": "#B8AE9B",
+    "red": "#B3261E",
+    "redPressed": "#8F1E18",
+    "blue": "#1F4E79",
+    "focus": "#1F4E79",
+    "disabledText": "#6B6459",
+    "status": {
+      "confirmed": { "fg": "#1F4E79", "bg": "#E3ECF4" },
+      "completed": { "fg": "#2E6B3F", "bg": "#E4EFE3" },
+      "cancelled": { "fg": "#5E574D", "bg": "#EAE4D6" },
+      "noShow": { "fg": "#7A4A00", "bg": "#F6E7C8" },
+      "error": { "fg": "#B3261E", "bg": "#F8E1DE" }
+    }
+  },
+  "font": {
+    "heading": { "family": "Barlow Condensed", "fallback": ["Arial Narrow", "sans-serif"], "weights": [700, 800] },
+    "body": { "family": "DM Sans", "fallback": ["system-ui", "sans-serif"], "weights": [400, 500, 700] }
+  },
+  "type": {
+    "display": { "font": "heading", "size": 42, "lineHeight": 1.0, "weight": 800, "transform": "uppercase", "tracking": 0.02 },
+    "h1": { "font": "heading", "size": 32, "lineHeight": 1.05, "weight": 800, "transform": "uppercase", "tracking": 0.02 },
+    "h2": { "font": "heading", "size": 24, "lineHeight": 1.1, "weight": 800, "transform": "uppercase", "tracking": 0.02 },
+    "label": { "font": "heading", "size": 18, "lineHeight": 1.1, "weight": 700, "transform": "uppercase", "tracking": 0.08 },
+    "price": { "font": "heading", "size": 26, "lineHeight": 1.0, "weight": 700 },
+    "button": { "font": "heading", "size": 20, "lineHeight": 1.0, "weight": 700, "transform": "uppercase", "tracking": 0.06 },
+    "tab": { "font": "heading", "size": 14, "lineHeight": 1.0, "weight": 700, "transform": "uppercase", "tracking": 0.06 },
+    "title": { "font": "body", "size": 18, "lineHeight": 1.3, "weight": 700 },
+    "body": { "font": "body", "size": 16, "lineHeight": 1.5, "weight": 400 },
+    "bodyStrong": { "font": "body", "size": 16, "lineHeight": 1.5, "weight": 700 },
+    "small": { "font": "body", "size": 14, "lineHeight": 1.4, "weight": 500 },
+    "caption": { "font": "body", "size": 12, "lineHeight": 1.35, "weight": 700 }
+  },
+  "space": { "1": 4, "2": 8, "3": 12, "4": 16, "5": 20, "6": 24, "8": 32, "10": 40, "12": 48 },
+  "radius": { "sm": 6, "md": 8, "lg": 12, "full": 999 },
+  "border": { "thin": 1, "thick": 2 },
+  "size": {
+    "touch": 44,
+    "control": 48,
+    "cta": 56,
+    "tabBar": 72,
+    "avatar": 52,
+    "iconButton": 44,
+    "icon": 24,
+    "poleStripe": 10
+  },
+  "layout": {
+    "clientMaxWidth": 480,
+    "gutter": 20,
+    "breakpoints": { "md": 768, "lg": 1024 },
+    "adminSidebar": 240,
+    "adminContentMax": 1200
+  },
+  "motion": {
+    "fast": 120,
+    "base": 200,
+    "easing": [0.2, 0, 0, 1]
+  },
+  "pattern": {
+    "poleStripe": {
+      "description": "Barber-pole band. Hard-stop diagonal stripes, 135 degrees, 10 units per stripe.",
+      "angle": 135,
+      "stops": ["#B3261E", "#FBF8F1", "#1F4E79", "#FBF8F1"],
+      "stripeWidth": 10
+    },
+    "priceLeader": {
+      "description": "Dotted leader between a service name and its price.",
+      "style": "dotted",
+      "width": 2,
+      "color": "#B8AE9B"
+    }
+  }
+}
