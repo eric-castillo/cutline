@@ -79,7 +79,7 @@ Not in the MVP. Tokens are semantic (`paper`, `ink`), so a dark set can be added
 ## 4. Typography
 
 **Heading family:** Barlow Condensed (700, 800), uppercase, like painted signs. **Body family:** DM Sans (400, 500, 700).
-Both are **self-hosted** (fontsource packages) to satisfy the strict CSP and avoid third-party requests (`06` §10.2); latin and latin-extended subsets cover Spanish. Mobile loads the same families through `expo-font`.
+Both are **self-hosted** static TTF files (SIL OFL, see `app/assets/font-licenses/`) to avoid third-party requests. Native bundles them with `react-native-asset`; web registers them with `@font-face` under the same names. Each weight is a separate face named after its PostScript name (for example `BarlowCondensed-ExtraBold`), so the same `fontFamily` string works on iOS, Android and web. They cover Spanish accents and `ñ`.
 
 | Style | Font | Size / line | Weight | Notes |
 |---|---|---|---|---|
@@ -323,7 +323,7 @@ Lab and Learn screens are specified in `09-lab-inspector.md` and `10-learn-secur
 
 ## 12. Copy and i18n
 
-Every string lives in `packages/shared/i18n/{en,es}.json`. Keys are dotted and screen-scoped (`explore.title`, `time.shopTime`). Interpolation uses named params; plurals use ICU-style rules. Dates, times and money are formatted with `Intl` in shop time (`03` §2).
+Every string lives in `app/src/i18n/{en,es}.json`; `npm run i18n:check` fails if a key is missing in either language. Keys are dotted and screen-scoped (`explore.title`, `time.shopTime`). Interpolation uses named params; plurals use ICU-style rules. Dates, times and money are formatted with `Intl` in shop time (`03` §2).
 
 | Key | English | Español |
 |---|---|---|
@@ -348,7 +348,7 @@ Every string lives in `packages/shared/i18n/{en,es}.json`. Keys are dotted and s
 
 ## 13. Web and mobile mapping
 
-| Concern | Web (React) | Mobile (Expo / React Native) |
+| Concern | Web (react-native-web) | Mobile (React Native CLI) |
 |---|---|---|
 | Tokens | `tokens.css` variables | `tokens.ts` constants |
 | Tabs | Layout route + tab bar component | `@react-navigation/bottom-tabs` |
@@ -356,10 +356,10 @@ Every string lives in `packages/shared/i18n/{en,es}.json`. Keys are dotted and s
 | Admin shell | Sidebar / drawer | Not planned for mobile (admin stays web) |
 | Pole stripe | CSS repeating gradient | Shared SVG asset (no CSS gradients in RN) |
 | Dotted leader | CSS `border-bottom: 2px dotted` | `borderStyle: 'dotted'` or a repeated-dot SVG |
-| Fonts | fontsource, self-hosted | `expo-font` with the same files |
+| Fonts | `@font-face`, self-hosted TTF | `react-native-asset` with the same files |
 | Bottom sheet | Dialog component | `@gorhom/bottom-sheet` or a modal |
 | Safe areas | CSS env() | `react-native-safe-area-context` |
-| Secure storage | Cookies only | `expo-secure-store` for the bearer token |
+| Storage | AsyncStorage (IndexedDB on web) | AsyncStorage. No tokens: the session is simulated (L-03) |
 
 Admin screens are web-only by design; the mobile app covers Client and Barber.
 

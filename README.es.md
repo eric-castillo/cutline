@@ -21,7 +21,62 @@ Es un **MVP móvil con backend simulado**. No hay servidor, base de datos, auten
 
 ## Ejecutarlo
 
-Las instrucciones se añadirán con el Slice 0 (iOS, Android y web).
+> **En qué punto está el proyecto:** Slice 0 (fundamentos). La app muestra por ahora la pantalla **Explorar** con servicios de ejemplo fijos dentro de tres pestañas de cliente vacías. Todavía no hay flujo de reserva ni backend simulado; llegan en los siguientes slices.
+
+Todos los comandos se ejecutan dentro de `app/`. No hay monorepo ni Expo.
+
+### Requisitos
+
+Sigue la guía de React Native [Set up your development environment](https://reactnative.dev/docs/set-up-your-development-environment) (React Native CLI, no Expo Go). En resumen:
+
+- **Node** 22.11 o superior, y Watchman.
+- **iOS** (solo macOS): Xcode con sus herramientas de línea de comandos, Ruby y CocoaPods (se instalan con Bundler, ver abajo).
+- **Android:** un JDK (funciona el 17), Android Studio con un SDK y un emulador (o un dispositivo con depuración USB).
+
+### Instalar
+
+```bash
+cd app
+npm install
+```
+
+### iOS
+
+```bash
+cd ios
+bundle install            # una sola vez
+bundle exec pod install   # lento la primera vez (varios minutos)
+cd ..
+npm start                 # Metro, déjalo corriendo
+npm run ios               # en otra terminal; añade -- --simulator "iPhone 16" para elegir uno
+```
+
+### Android
+
+Inicia un emulador (o conecta un dispositivo) y luego:
+
+```bash
+npm start                 # Metro, déjalo corriendo
+npm run android           # en otra terminal
+```
+
+### Web
+
+```bash
+npm run web               # servidor de desarrollo; abre la URL que imprime
+npm run web:build         # build estático en app/dist/web
+npm run web:preview       # sirve ese build en local
+```
+
+La versión web usa `react-native-web` empaquetado con Vite. Por ahora solo se ha comprobado en Chrome de escritorio; en [`docs/spike-web.md`](docs/spike-web.md) (en inglés) está lo que funciona, lo que necesitó ajustes y lo que sigue abierto.
+
+### Comprobaciones
+
+```bash
+npm run check             # lint, tipos, formato, claves i18n, tokens de diseño y pruebas
+```
+
+Scripts sueltos: `npm run lint`, `typecheck`, `format:check`, `i18n:check`, `tokens:check`, `test`. Tras editar `docs/design/design-tokens.json`, ejecuta `npm run tokens` para regenerar `app/src/theme/tokens.ts`.
 
 ## Construido con ayuda de IA
 

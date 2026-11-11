@@ -21,7 +21,62 @@ This is a **mobile MVP with a simulated backend**. There is no real server, data
 
 ## Run it
 
-Setup instructions will be added with Slice 0 (iOS, Android and web).
+> **Where the project is:** Slice 0 (foundations). The app currently shows the **Explore** screen with fixed sample services inside three empty client tabs. There is no booking flow and no simulated backend yet; those come in later slices.
+
+All commands run inside `app/`. There is no monorepo and no Expo.
+
+### Requirements
+
+Follow the React Native guide [Set up your development environment](https://reactnative.dev/docs/set-up-your-development-environment) (React Native CLI, not Expo Go). In short:
+
+- **Node** 22.11 or newer, and Watchman.
+- **iOS** (macOS only): Xcode with its command line tools, Ruby and CocoaPods (installed through Bundler, see below).
+- **Android:** a JDK (17 works), Android Studio with an SDK and an emulator (or a device with USB debugging).
+
+### Install
+
+```bash
+cd app
+npm install
+```
+
+### iOS
+
+```bash
+cd ios
+bundle install            # once
+bundle exec pod install   # slow the first time (several minutes)
+cd ..
+npm start                 # Metro bundler, keep it running
+npm run ios               # in another terminal; add -- --simulator "iPhone 16" to pick one
+```
+
+### Android
+
+Start an emulator (or connect a device), then:
+
+```bash
+npm start                 # Metro bundler, keep it running
+npm run android           # in another terminal
+```
+
+### Web
+
+```bash
+npm run web               # dev server; open the URL it prints
+npm run web:build         # static build into app/dist/web
+npm run web:preview       # serve that build locally
+```
+
+The web build uses `react-native-web` bundled by Vite. It has only been checked in desktop Chrome so far; see [`docs/spike-web.md`](docs/spike-web.md) for what works, what needed workarounds and what is still open.
+
+### Checks
+
+```bash
+npm run check             # lint, types, formatting, i18n keys, design tokens, tests
+```
+
+Individual scripts: `npm run lint`, `typecheck`, `format:check`, `i18n:check`, `tokens:check`, `test`. After editing `docs/design/design-tokens.json`, run `npm run tokens` to regenerate `app/src/theme/tokens.ts`.
 
 ## Built with AI assistance
 
