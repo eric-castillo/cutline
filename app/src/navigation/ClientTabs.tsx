@@ -1,7 +1,13 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {
+  BottomTabBarProps,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import {useTranslation} from 'react-i18next';
+import {TabBar} from '../components/TabBar';
+import {ExploreScreen} from '../screens/client/ExploreScreen';
+import {colors} from '../theme';
 
 export type ClientTabsParamList = {
   Explore: undefined;
@@ -11,20 +17,20 @@ export type ClientTabsParamList = {
 
 const Tab = createBottomTabNavigator<ClientTabsParamList>();
 
-// Empty placeholder; replaced by real screens in later steps/slices.
-function EmptyScreen() {
-  return <View style={styles.fill} />;
-}
+const renderTabBar = (props: BottomTabBarProps) => <TabBar {...props} />;
 
-const styles = StyleSheet.create({fill: {flex: 1}});
+// Empty placeholder; replaced by the real screens in later slices.
+function EmptyScreen() {
+  return <View style={styles.empty} />;
+}
 
 export function ClientTabs() {
   const {t} = useTranslation();
   return (
-    <Tab.Navigator>
+    <Tab.Navigator tabBar={renderTabBar} screenOptions={{headerShown: false}}>
       <Tab.Screen
         name="Explore"
-        component={EmptyScreen}
+        component={ExploreScreen}
         options={{title: t('tabs.explore')}}
       />
       <Tab.Screen
@@ -40,3 +46,7 @@ export function ClientTabs() {
     </Tab.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  empty: {flex: 1, backgroundColor: colors.paper},
+});
