@@ -1,0 +1,22 @@
+{
+  "tabs": {
+    "explore": "Explorar",
+    "appointments": "Mis citas",
+    "profile": "Perfil"
+  },
+  "explore": {
+    "title": "Elige tu servicio",
+    "duration": "{{minutes}} min"
+  },
+  "lang": {
+    "label": "Idioma",
+    "en": "Inglés",
+    "es": "Español"
+  },
+  "status": {
+    "confirmed": "Confirmada",
+    "completed": "Completada",
+    "cancelled": "Cancelada",
+    "noShow": "No asistió"
+  }
+}

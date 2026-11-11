@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {useTranslation} from 'react-i18next';
 
 export type ClientTabsParamList = {
   Explore: undefined;
@@ -18,11 +19,24 @@ function EmptyScreen() {
 const styles = StyleSheet.create({fill: {flex: 1}});
 
 export function ClientTabs() {
+  const {t} = useTranslation();
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Explore" component={EmptyScreen} />
-      <Tab.Screen name="MyAppointments" component={EmptyScreen} />
-      <Tab.Screen name="Profile" component={EmptyScreen} />
+      <Tab.Screen
+        name="Explore"
+        component={EmptyScreen}
+        options={{title: t('tabs.explore')}}
+      />
+      <Tab.Screen
+        name="MyAppointments"
+        component={EmptyScreen}
+        options={{title: t('tabs.appointments')}}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={EmptyScreen}
+        options={{title: t('tabs.profile')}}
+      />
     </Tab.Navigator>
   );
 }
