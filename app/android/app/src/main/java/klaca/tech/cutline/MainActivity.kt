@@ -1,4 +1,4 @@
-package com.cutline
+package klaca.tech.cutline
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

@@ -1,4 +1,4 @@
-package com.cutline
+package klaca.tech.cutline
 
 import android.app.Application
 import com.facebook.react.PackageList
