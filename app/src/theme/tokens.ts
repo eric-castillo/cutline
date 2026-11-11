@@ -145,6 +145,7 @@ export const tokens = {
   },
   size: {
     touch: 44,
+    row: 64,
     control: 48,
     cta: 56,
     tabBar: 72,

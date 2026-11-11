@@ -69,9 +69,13 @@ async function render() {
 async function main() {
   const output = await render();
   if (process.argv.includes('--check')) {
-    const current = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : '';
+    const current = fs.existsSync(target)
+      ? fs.readFileSync(target, 'utf8')
+      : '';
     if (current !== output) {
-      console.error('src/theme/tokens.ts is out of date. Run `npm run tokens`.');
+      console.error(
+        'src/theme/tokens.ts is out of date. Run `npm run tokens`.',
+      );
       process.exit(1);
     }
     console.log('tokens.ts is up to date.');
