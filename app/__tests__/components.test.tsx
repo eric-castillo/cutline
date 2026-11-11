@@ -64,11 +64,11 @@ describe('StatusBadge', () => {
 describe('LangToggle', () => {
   it('switches the app language and marks the active segment', async () => {
     await render(<LangToggle />);
-    expect(screen.getByRole('radio', {name: 'English'})).toBeSelected();
+    expect(screen.getByRole('radio', {name: 'English'})).toBeChecked();
 
     await fireEvent.press(screen.getByRole('radio', {name: 'Spanish'}));
 
     expect(i18n.language).toBe('es');
-    expect(await screen.findByRole('radio', {name: 'Español'})).toBeSelected();
+    expect(await screen.findByRole('radio', {name: 'Español'})).toBeChecked();
   });
 });

@@ -23,7 +23,7 @@ export function LangToggle() {
             key={language}
             accessibilityRole="radio"
             accessibilityLabel={t(`lang.${language}`)}
-            accessibilityState={{selected}}
+            aria-checked={selected}
             onPress={() => setLanguage(language)}
             style={[styles.segment, selected ? styles.selected : undefined]}
           >

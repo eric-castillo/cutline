@@ -20,7 +20,7 @@ function Base({
       strokeWidth={border.thick}
       strokeLinecap="round"
       strokeLinejoin="round"
-      accessible={false}
+      aria-hidden
     >
       {children}
     </Svg>

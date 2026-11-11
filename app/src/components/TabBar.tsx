@@ -44,7 +44,7 @@ export function TabBar({state, descriptors, navigation}: BottomTabBarProps) {
             key={route.key}
             accessibilityRole="tab"
             accessibilityLabel={label}
-            accessibilityState={{selected: focused}}
+            aria-selected={focused}
             onPress={onPress}
             style={styles.tab}
           >

@@ -38,7 +38,7 @@ export function Chip({label, selected = false, onPress}: Props) {
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={label}
-      accessibilityState={{selected}}
+      aria-selected={selected}
       onPress={onPress}
     >
       {body}
