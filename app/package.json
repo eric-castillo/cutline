@@ -10,7 +10,11 @@
     "test": "jest",
     "tokens": "node scripts/gen-tokens.js",
     "tokens:check": "node scripts/gen-tokens.js --check",
-    "i18n:check": "node scripts/check-i18n.js"
+    "i18n:check": "node scripts/check-i18n.js",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run lint && npm run typecheck && npm run format:check && npm run i18n:check && npm run tokens:check && npm test"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^7.21.0",
